@@ -7,7 +7,7 @@ This gives mods the ability to give players their on cells, where they can white
 # How to use
 
 
-Mods:
+Admin & Mods:
   
   /registerCell <pid>
 
@@ -23,13 +23,13 @@ Add a whitelisted member to your cell who can enter when it's locked
   
 Remove a whitelisted member from your cell
 
-  /lock && /unlock
+  /lock & /unlock
   
 Make your cell locked/unlocked from people not whitelisted, if they try to enter they will be redirected back (Make sure you are in your own cell when locking)
 
 # How to install
 
 
-Put "playercells.json" in mp-stuff/data or keepers/PluginExample/data
+Put "playercells.json" in mp-stuff/data or corescripts/data
 
-Put snippets of code in playercells.lua in their respective places in server.lua in mp-stuff/scripts or keepers/PluginExample/scripts (Read Comments)
+Put snippets of code in playercells.lua in their respective places in server.lua in mp-stuff/scripts or corescripts/data (Read Comments)
