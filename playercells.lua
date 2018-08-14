@@ -31,7 +31,7 @@ end
 
 
 
--- Add this on the "OnMessage" command block
+-- Add this on the OnPlayerSendMessage" command block
 elseif cmd[1] == "registerCell" and moderator then
 			if myMod.CheckPlayerValidity(pid, cmd[2]) then
 				local targetpid = tonumber(cmd[2])
@@ -115,41 +115,25 @@ elseif cmd[1] == "registerCell" and moderator then
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --Add this where original function is located
-function OnPlayerCellChange(pid)
-	local cellName = tes3mp.GetCell(pid)
-	local playerName = tes3mp.GetName(pid)
-	if playerCells.cells[cellName] ~= nil then
-		if playerCells.cells[cellName].owner == playerName then
-			
-		elseif tableHelper.containsValue(playerCells.cells[cellName].members, playerName) == true then
+	function OnPlayerCellChange(pid)
+		local cellName = tes3mp.GetCell(pid)
+		local playerName = string.lower(tes3mp.GetName(pid))
 		
-		elseif playerCells.cells[cellName].locked == 1 then
-			--tes3mp.SetHealthCurrent(pid, 0)
-			--tes3mp.SendStatsDynamic(pid)
-			Players[pid]:LoadCell()
-			tes3mp.SendMessage(pid, "This cell is current locked, contact ".. playerCells.cells[cellName].owner .." to be whitelisted \n", false)
+		if playerCells.cells[cellName] ~= nil and playerCells.cells[cellName].locked == 1 then
+		
+			if playerCells.cells[cellName].owner == playerName then
+	
+			elseif tableHelper.containsValue(playerCells.cells[cellName].members, playerName) == true then
+			
+			elseif Players[pid].data.settings.admin >= 1 then
+			
+			else
+				Players[pid]:LoadCell()
+				tes3mp.SendMessage(pid, "This cell is currently locked, contact " .. playerCells.cells[cellName].owner .. " to be whitelisted \n", false)
+			end
 		end
 		
-
+		myMod.OnPlayerCellChange(pid)
 	end
-	
-	myMod.OnPlayerCellChange(pid)
-end
 
