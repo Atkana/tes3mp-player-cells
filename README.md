@@ -28,7 +28,7 @@ Remove a whitelisted member from your cell
 Make your cell locked/unlocked from people not whitelisted, if they try to enter they will be redirected back (Make sure you are in your own cell when locking)
 
 # How to install
-Put "playercells.lua" in mp-stuff/data or corescripts/data
+Put "playercells.lua" in mp-stuff/scripts or corescripts/scripts
 
 Put "playercells.json" in mp-stuff/data or corescripts/data
 
